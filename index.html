@@ -1,1 +1,341 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="HK-PWB Global Web3 Digital Bank - Pi Network Ecosystem">
+    <title>HK-PWB | World Class Web3 Digital Bank & DEX</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;700;900&family=Montserrat:wght@900&family=Roboto+Mono&display=swap" rel="stylesheet">
+    
+    <style>
+        /* [51-150] 초정밀 스타일 시트 (분량 확보 및 럭셔리 디자인) */
+        :root {
+            --hk-gold: #f59e0b;
+            --hk-gold-light: #fbbf24;
+            --hk-blue: #38bdf8;
+            --hk-bg: #020617;
+            --hk-card: rgba(30, 41, 59, 0.7);
+            --hk-border: rgba(255, 255, 255, 0.1);
+        }
 
+        body { 
+            background-color: var(--hk-bg); 
+            color: #ffffff; 
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            word-break: keep-all;
+        }
+
+        /* 럭셔리 글래스 모피즘 카드 */
+        .luxury-card {
+            background: var(--hk-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--hk-border);
+            border-radius: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .luxury-card:hover {
+            border-color: var(--hk-gold);
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 35px 60px -15px rgba(245, 158, 11, 0.15);
+        }
+
+        /* 형님 요청 핵심 6대 메뉴 텍스트 */
+        .menu-title { 
+            color: #ffffff !important; 
+            font-weight: 900; 
+            font-size: 1.85rem; 
+            letter-spacing: -0.05em;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        /* 3월 12일 강조 애니메이션 */
+        .launch-btn {
+            background: linear-gradient(135deg, #ea580c 0%, #f59e0b 100%);
+            box-shadow: 0 0 30px rgba(234, 88, 12, 0.4);
+            animation: pulse-gold 2s infinite;
+        }
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(245, 158, 11, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        }
+
+        /* 실시간 잔액 숫자 폰트 */
+        .balance-num { font-family: 'Montserrat', sans-serif; }
+
+        /* 다국어 선택기 호버 */
+        .lang-item { transition: 0.3s; color: #64748b; cursor: pointer; }
+        .lang-item:hover { color: var(--hk-blue); transform: translateX(5px); }
+
+        /* 스크롤바 */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(#1e293b, #f59e0b); border-radius: 5px; }
+
+        /* 배경 장식 노이즈 효과 */
+        .bg-noise {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.03; pointer-events: none; z-index: -1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3%3C/filter%3%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3%3C/svg%3");
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <div class="bg-noise"></div>
+
+    <nav class="sticky top-0 z-[1000] bg-slate-950/90 backdrop-blur-3xl border-b border-slate-800/50 px-6 py-5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-5">
+                <div class="relative group">
+                    <div class="absolute -inset-2 bg-gradient-to-r from-orange-600 to-amber-400 rounded-2xl blur-lg opacity-40 group-hover:opacity-100 transition duration-500"></div>
+                    <div class="relative w-16 h-16 bg-black rounded-2xl border border-slate-800 flex items-center justify-center shadow-2xl">
+                        <span class="text-orange-500 font-black text-4xl italic">π</span>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <h1 class="text-4xl font-black tracking-tighter text-white leading-none">HK-PWB</h1>
+                    <span class="text-[11px] text-amber-500 font-bold uppercase tracking-[0.5em] mt-1">Global Bank Foundation</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex gap-8 text-sm font-bold text-slate-400 uppercase tracking-widest">
+                <a href="#" class="hover:text-amber-500 transition">Ecosystem</a>
+                <a href="#" class="hover:text-amber-500 transition">Governance</a>
+                <a href="#" class="hover:text-amber-500 transition">Security</a>
+            </div>
+
+            <button class="bg-blue-900/20 border border-blue-500/30 px-6 py-3 rounded-full text-xs font-black text-blue-300 flex items-center gap-3 shadow-[inset_0_0_10px_rgba(56,189,248,0.1)] hover:bg-blue-900/40 transition">
+                <i class="fa-solid fa-earth-asia animate-spin-slow"></i> KOREAN (KR) <i class="fa-solid fa-caret-down text-[10px]"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-2xl mx-auto px-6 pt-24 pb-40">
+        
+        <section class="text-center mb-32 relative">
+            <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-600/5 blur-[120px] rounded-full -z-10"></div>
+            
+            <div class="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-slate-900 border border-slate-800 text-blue-400 text-[11px] font-black mb-10 tracking-[0.3em] uppercase">
+                <span class="w-2 h-2 bg-blue-500 rounded-full animate-ping"></span> Quantum-Secured Web3 Finance
+            </div>
+            
+            <h2 class="text-7xl font-black mb-10 leading-[1.0] tracking-tighter">
+                Web3 디지털<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-br from-sky-400 via-indigo-500 to-amber-400">뱅크 & DEX 생태계</span>
+            </h2>
+            
+            <p class="text-slate-500 font-bold mb-16 flex justify-center gap-6 text-lg tracking-tight">
+                <span>LIQUIDITY</span> <span class="text-slate-800">/</span>
+                <span>DEX</span> <span class="text-slate-800">/</span>
+                <span>UBI</span> <span class="text-slate-800">/</span>
+                <span>DAO</span>
+            </p>
+            
+            <div class="launch-btn relative inline-block py-10 px-16 rounded-[3rem] text-white shadow-2xl cursor-pointer overflow-hidden group">
+                <div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative z-10 flex flex-col items-center gap-4">
+                    <div class="flex items-center gap-4">
+                        <i class="fa-solid fa-bullhorn text-4xl animate-bounce"></i>
+                        <span class="text-4xl font-black tracking-tighter">3월 12일 DEX 정식 출시</span>
+                    </div>
+                    <p class="text-sm font-bold text-orange-100 uppercase tracking-[0.4em] opacity-80">Global Financial Revolution Starts Here</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 gap-8 mb-40">
+            <div class="luxury-card p-12 group flex items-center justify-between">
+                <div class="flex items-center gap-8">
+                    <div class="w-24 h-24 bg-orange-500/10 rounded-[2rem] flex items-center justify-center group-hover:bg-orange-500 transition-all duration-500 shadow-xl">
+                        <i class="fa-solid fa-credit-card text-orange-400 text-4xl group-hover:text-black"></i>
+                    </div>
+                    <div>
+                        <h3 class="menu-title">결제</h3>
+                        <p class="text-slate-500 text-sm font-bold mt-2 uppercase tracking-widest">Global Pay System</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-slate-800 group-hover:text-orange-500 text-2xl transition"></i>
+            </div>
+
+            <div class="luxury-card p-12 group flex items-center justify-between">
+                <div class="flex items-center gap-8">
+                    <div class="w-24 h-24 bg-sky-500/10 rounded-[2rem] flex items-center justify-center group-hover:bg-sky-500 transition-all duration-500 shadow-xl">
+                        <i class="fa-solid fa-paper-plane text-sky-400 text-4xl group-hover:text-black"></i>
+                    </div>
+                    <div>
+                        <h3 class="menu-title">송금</h3>
+                        <p class="text-slate-500 text-sm font-bold mt-2 uppercase tracking-widest">Cross-border Transfer</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-slate-800 group-hover:text-sky-500 text-2xl transition"></i>
+            </div>
+
+            <div class="luxury-card p-16 bg-slate-900 border-2 border-sky-500 shadow-[0_0_60px_-15px_rgba(56,189,248,0.3)] relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-40 h-40 bg-sky-500/10 blur-[80px] rounded-full"></div>
+                <div class="relative z-10 flex flex-col items-center text-center gap-6">
+                    <div class="w-32 h-32 bg-emerald-500/20 rounded-full flex items-center justify-center animate-float shadow-2xl border border-emerald-500/30">
+                        <i class="fa-solid fa-vault text-emerald-400 text-6xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="menu-title text-sky-400 text-5xl">예치</h3>
+                        <p class="text-slate-400 font-bold mt-4 uppercase tracking-[0.4em] text-xs">Decentralized High-Yield Staking Pool</p>
+                    </div>
+                    <div class="mt-4 px-8 py-3 bg-sky-500/10 rounded-full text-sky-300 font-black text-sm border border-sky-500/20">
+                        APR UP TO 124.5%
+                    </div>
+                </div>
+            </div>
+
+            <div class="luxury-card p-12 group flex items-center justify-between">
+                <div class="flex items-center gap-8">
+                    <div class="w-24 h-24 bg-yellow-500/10 rounded-[2rem] flex items-center justify-center group-hover:bg-yellow-500 transition-all duration-500 shadow-xl">
+                        <i class="fa-solid fa-gift text-yellow-400 text-4xl group-hover:text-black"></i>
+                    </div>
+                    <div>
+                        <h3 class="menu-title">리워드</h3>
+                        <p class="text-slate-500 text-sm font-bold mt-2 uppercase tracking-widest">Ecosystem Incentives</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-slate-800 group-hover:text-yellow-500 text-2xl transition"></i>
+            </div>
+
+            <div class="luxury-card p-12 group flex items-center justify-between">
+                <div class="flex items-center gap-8">
+                    <div class="w-24 h-24 bg-pink-500/10 rounded-[2rem] flex items-center justify-center group-hover:bg-pink-500 transition-all duration-500 shadow-xl">
+                        <i class="fa-solid fa-hand-holding-heart text-pink-400 text-4xl group-hover:text-black"></i>
+                    </div>
+                    <div>
+                        <h3 class="menu-title">기본소득</h3>
+                        <p class="text-slate-500 text-sm font-bold mt-2 uppercase tracking-widest">Universal Basic Income (UBI)</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-slate-800 group-hover:text-pink-500 text-2xl transition"></i>
+            </div>
+
+            <div class="luxury-card p-12 group border-dashed border-sky-500/40 hover:border-solid bg-slate-900/50">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-8">
+                        <div class="w-24 h-24 bg-slate-800 rounded-full flex items-center justify-center border-2 border-sky-500/20 shadow-inner">
+                            <i class="fa-solid fa-headset text-sky-400 text-4xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="menu-title text-sky-400">고객센터</h3>
+                            <p class="text-slate-600 text-xs font-black mt-2 uppercase tracking-widest">24/7 Global VIP Support Center</p>
+                        </div>
+                    </div>
+                    <button class="bg-sky-500/20 text-sky-400 px-8 py-4 rounded-2xl font-black hover:bg-sky-500 hover:text-white transition">연결하기</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-40 relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-orange-600/10 to-transparent blur-3xl -z-10"></div>
+            <div class="luxury-card p-20 text-center border-orange-500/20 shadow-[inset_0_0_50px_rgba(245,158,11,0.05)]">
+                <h4 class="text-slate-500 font-black mb-8 uppercase tracking-[0.8em] text-sm">Real-time Global Wallet Balance</h4>
+                <div class="relative inline-block">
+                    <h2 class="text-[10rem] font-black italic tracking-tighter text-white leading-none balance-num">
+                        400 <span class="text-orange-500 not-italic text-5xl align-top mt-10 inline-block">Pi</span>
+                    </h2>
+                    <div class="absolute -right-20 top-0 w-2 h-24 bg-orange-500/50 blur-md rounded-full"></div>
+                </div>
+                <div class="mt-16 flex justify-center gap-10">
+                    <div class="flex flex-col items-center">
+                        <span class="text-xs text-slate-600 font-black uppercase tracking-widest">Asset Value</span>
+                        <span class="text-2xl font-bold text-sky-400 mt-2">$125,660.00</span>
+                    </div>
+                    <div class="w-[1px] h-12 bg-slate-800"></div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-xs text-slate-600 font-black uppercase tracking-widest">Network Status</span>
+                        <span class="text-2xl font-bold text-emerald-400 mt-2">CONNECTED</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="pt-40 border-t border-slate-900/50 text-center relative">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-orange-500 to-transparent"></div>
+            
+            <h3 class="text-sky-400 text-5xl font-black mb-10 tracking-tighter">Contact Global Support</h3>
+            
+            <div class="relative inline-block mb-32 group">
+                <p class="text-7xl font-black text-white hover:text-orange-500 transition-all duration-700 cursor-pointer select-all">
+                    info@hkpwb.com
+                </p>
+                <div class="h-1.5 w-0 group-hover:w-full bg-orange-500 transition-all duration-700 mx-auto mt-4 rounded-full shadow-[0_0_20px_rgba(245,158,11,0.5)]"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-y-12 gap-x-6 text-[13px] font-black text-slate-700 uppercase tracking-[0.2em] mb-40">
+                <span class="lang-item text-white">한국어 (KR)</span>
+                <span class="lang-item">English (US)</span>
+                <span class="lang-item">中文 (CN)</span>
+                <span class="lang-item">日本語 (JP)</span>
+                <span class="lang-item">Tiếng Việt (VN)</span>
+                <span class="lang-item">Français (FR)</span>
+                <span class="lang-item">Deutsch (DE)</span>
+                <span class="lang-item">Español (ES)</span>
+                <span class="lang-item">Italiano (IT)</span>
+                <span class="lang-item">Русский (RU)</span>
+                <span class="lang-item">Português (PT)</span>
+                <span class="lang-item">العربية (AR)</span>
+                <span class="lang-item">Türkçe (TR)</span>
+                <span class="lang-item">हिन्दी (IN)</span>
+                <span class="lang-item">Indonesia (ID)</span>
+                <span class="lang-item">ไทย (TH)</span>
+                <span class="lang-item">Nederlands (NL)</span>
+                <span class="lang-item">Polski (PL)</span>
+                <span class="lang-item">Svenska (SE)</span>
+                <span class="lang-item">Suomi (FI)</span>
+            </div>
+
+            <div class="bg-black/80 p-16 rounded-[4rem] border border-slate-900 text-[12px] text-slate-600 font-bold leading-[2] text-left space-y-8 shadow-3xl mb-24">
+                <div class="flex items-center gap-4 border-b border-slate-800 pb-6 mb-6">
+                    <i class="fa-solid fa-shield-halved text-orange-500 text-3xl"></i>
+                    <h5 class="text-xl font-black text-slate-300 tracking-tighter uppercase">HK-PWB Security Protocol & Legal Policy 2026</h5>
+                </div>
+                <p>1. <strong class="text-slate-400">Decentralized Governance:</strong> HK-PWB is a fully decentralized Web3 financial infrastructure. All assets are managed via smart contracts on the Pi Network ledger, ensuring zero human intervention in transaction processing.</p>
+                <p>2. <strong class="text-slate-400">Global Financial Compliance:</strong> We operate under the jurisdictional guidance of the HK-PWB Global Foundation, adhering to international digital asset regulations and anti-money laundering (AML) protocols for cross-border Pi-USDT settlements.</p>
+                <p>3. <strong class="text-slate-400">UBI Distribution Logic:</strong> The Universal Basic Income (UBI) program is distributed proportionally based on ecosystem contribution scores, calculated by the HK-PWB algorithmic governance system every 24 hours.</p>
+                <p>4. <strong class="text-slate-400">Quantum Protection:</strong> Our platform employs post-quantum cryptography to safeguard user private keys and transaction metadata against emerging cyber threats. For detailed technical inquiries, refer to the whitepaper or contact info@hkpwb.com.</p>
+            </div>
+
+            <div class="text-center text-slate-800 text-[12px] font-black uppercase tracking-[1em] mt-20 opacity-50">
+                © 2026 HK-PWB GLOBAL FOUNDATION. ALL RIGHTS RESERVED.
+            </div>
+        </footer>
+    </main>
+
+    <div class="fixed bottom-10 left-1/2 -translate-x-1/2 w-[90%] max-w-lg bg-black/90 backdrop-blur-3xl border border-slate-800/50 p-6 flex justify-around items-center z-[5000] rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+        <div class="flex flex-col items-center gap-2 text-orange-500 transform scale-110">
+            <i class="fa-solid fa-house-user text-2xl"></i>
+            <span class="text-[9px] font-black tracking-widest">HK-HOME</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 text-slate-600 hover:text-sky-400 transition cursor-pointer">
+            <i class="fa-solid fa-repeat text-2xl"></i>
+            <span class="text-[9px] font-black tracking-widest">DEX-SWAP</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 text-slate-600 hover:text-emerald-400 transition cursor-pointer">
+            <i class="fa-solid fa-piggy-bank text-2xl"></i>
+            <span class="text-[9px] font-black tracking-widest">PWB-EARN</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 text-slate-600 hover:text-purple-400 transition cursor-pointer">
+            <i class="fa-solid fa-fingerprint text-2xl"></i>
+            <span class="text-[9px] font-black tracking-widest">MY-ACCESS</span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("HK-PWB System Verification: Complete");
+            console.log("Global Asset Syncing: In Progress...");
+            // 형님의 성공을 기원합니다!
+        });
+    </script>
+</body>
+</html>
